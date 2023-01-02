@@ -74,9 +74,7 @@
 
 **프론트엔드 2명, 백엔드 2명, 머신러닝 1명**으로 팀을 구성하여 진행했으며 **리뷰수가 10000개 이상인 네이버 쇼핑몰에 있는** **20개의 마스크에 대한 리뷰 데이터**를 수집한 뒤
 
-**자연어처리(NLP)로 분석 및 시각화**하여 그에 대한 **통계 데이터를 제공**하는 동시에 **다양한 마스크를 비교 및 확인**하고 
-
-**링크를 이용한 판매 사이트 연결**을 통해 **만족스러운 마스크 구매를 돕는** **웹 서비스** **마신사**를 구현하는 것이 목표였으며 **주제 선정** **이유**는 다음과 같았습니다.
+**자연어처리(NLP)로 분석 및 시각화**하여 그에 대한 **통계 데이터를 제공**하는 동시에 **다양한 마스크를 비교 및 확인**하고 **링크를 이용한 판매 사이트 연결**을 통해 **만족스러운 마스크 구매를 돕는** **웹 서비스** **마신사**를 구현하는 것이 목표였으며 **주제 선정** **이유**는 다음과 같았습니다.
 
 - 마스크 사이즈에 대한 **표준 규격이 존재하지 않음**
 - 리뷰를 읽고 제품에 대해 **파악하는데 많은 비용과 시간** 소요
@@ -138,33 +136,33 @@ DTO 설정에서 **Long maskId가 아닌 Mask mask로 정의**해서 **Mask 객
 
 3. **Spring boot에서 Swagger** 세팅 완료 후 서버를 실행하였는데 **org.springframework.context.ApplicationContextException: Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.NullPointerException**이 발생하면서 서버가 실행되지 않고 종료되는 문제가 발생하였습니다. <br><br> Spring boot **2.6 버전 이후**에 spring.mvc.pathmatch.matching-strategy 값이 **ant_apth_matcher에서 path_pattern_parser로 변경**되면서 몇몇 라이브러리에서 오류가 발생하는 것이 원인이었습니다.
 
-<p align="center"><img src="https://user-images.githubusercontent.com/109947297/210241972-29122608-e2b6-42f4-8e49-cae6daed02f5.png" height="280"><p>
+<p align="center"><img src="https://user-images.githubusercontent.com/109947297/210241972-29122608-e2b6-42f4-8e49-cae6daed02f5.png" height="320"><p>
 
 ⇒ **application.properties에** **spring.mvc.pathmatch.matching-strategy=ant_path_matcher 입력**하여 default값 변경하여 해결하였습니다.
-<p align="center"><img src="https://user-images.githubusercontent.com/109947297/210242414-287b3d5f-a779-448f-a884-50b4d9d5da67.png" height="230"><p>
+<p align="center"><img src="https://user-images.githubusercontent.com/109947297/210242414-287b3d5f-a779-448f-a884-50b4d9d5da67.png" height="280"><p>
 
 4. Spring boot로 작업 중에 **DataConversionException**으로 인하여 서버 에러가 발생하는 문제에 직면하였습니다. <br><br> deletion 컬럼 정의 시 데이터 값이 2개(Y/N) 밖에 존재하지 않도록 정했기에 해당 컬럼은 Enum을 이용하여 Entity와 DTO에 정의했는데 깜빡하고 해당 컬럼에 
 **@Enumerated(EnumType.STRING)**을 적용하지 않았던 것이 원인이었습니다.
 
-<p align="center"><img src="https://user-images.githubusercontent.com/109947297/210242612-a9a02d6a-baa3-4d01-8d2a-de100ed97969.png" height="230"><p>
+<p align="center"><img src="https://user-images.githubusercontent.com/109947297/210242612-a9a02d6a-baa3-4d01-8d2a-de100ed97969.png" height="280"><p>
  ⇒ <b>@Enumerated(EnumType.STRING)</b>하고 나니 서버가 정상적으로 실행되며 문제가 해결되었습니다.
 
-<p align="center"><img src="https://user-images.githubusercontent.com/109947297/210242759-aff7e722-2b7d-4439-9ae5-faf49006fdaf.png" height="230"><p>
+<p align="center"><img src="https://user-images.githubusercontent.com/109947297/210242759-aff7e722-2b7d-4439-9ae5-faf49006fdaf.png" height="280" width="650"><p>
 
 5. Spring boot로 조회 메소드에 MyBatis를 이용한 pagination 구현을 시도하였지만 **MyBatis mapper.xml 파일에서 TypeException**이 발생하였습니다. <br><br> 분명 MySQL Workbench에서는 잘 실행되는 쿼리문이라 문제점을 찾아보니 **Like문에 대한 조건 입력 시에 '%#{변수}%'으로 입력한 것이 원인**이었는데 <b>#{}</b>으로 변수값을 불러올 경우 자동으로 <b>따옴표('')</b>로 붙어서 **String 형태** 입력되기 때문에 문제가 발생한 것이었습니다.
     
-<p align="center"><img src="https://user-images.githubusercontent.com/109947297/210243024-e1a4371e-6c3b-483c-87f6-148e8e10f757.jpg" height="230"><p>
+<p align="center"><img src="https://user-images.githubusercontent.com/109947297/210243024-e1a4371e-6c3b-483c-87f6-148e8e10f757.jpg" height="280" width="550"><p>
 
  ⇒ **#을 $으로 수정함**으로써 문제를 해결하였는데 <b>${}</b>으로 변수값을 불러올 경우 자동으로 **해당 컬럼의 데이터 타입에 맞추어 입력**되기 때문입니다. 추가적으로 이 둘의 차이점을 찾아보니 <b>${}은 #{}보다 편리하지만</b> **쿼리 주입**을 예방할 수 없어 **보안적인 측면에 있어서 더 취약**하다는 점을 알 수 있었습니다.
 
-<p align="center"><img src="https://user-images.githubusercontent.com/109947297/210243184-c4d79e8f-359c-4f85-8b5f-ad0d885468e9.jpg" height="230"><p>
+<p align="center"><img src="https://user-images.githubusercontent.com/109947297/210243184-c4d79e8f-359c-4f85-8b5f-ad0d885468e9.jpg" height="280" width="550"><p>
 
 6. 필터링 기능을 구현한 메소드에서 **IllegalArgumentException**이 발생하는 문제를 발견하였습니다. <br><br> 원인을 찾아보니 **Y와 N만 입력할 수 있도록 JPA에서 Emum으로 정의**한 컬럼에 팀원들 중 한 명이 DB에 테스트 데이터를 입력할 때 **Y나 N이 아닌 test라는 문자열 데이터를 DB에 저장**해놔서 발생한 오류였습니다.  
 
-<p align="center"><img src="https://user-images.githubusercontent.com/109947297/210243670-c930f6ab-fd25-42c9-a459-3a48226a9d66.jpg" height="230"><p>
+<p align="center"><img src="https://user-images.githubusercontent.com/109947297/210243670-c930f6ab-fd25-42c9-a459-3a48226a9d66.jpg" height="280" width="550"><p>
 ⇒  해당 데이터 <b>test를 N으로 수정</b>하니 정상적으로 해결되었습니다.
 
-<p align="center"><img src="https://user-images.githubusercontent.com/109947297/210243733-2dc7af8c-218e-4c4a-8422-e678b691cd6a.jpg" height="230"><p>
+<p align="center"><img src="https://user-images.githubusercontent.com/109947297/210243733-2dc7af8c-218e-4c4a-8422-e678b691cd6a.jpg" height="280" width="550"><p>
 
 7. 찜 기능 작업 시 동일한 회원 ID와 마스크ID에 대해서 찜 데이터가 DB에 중복으로 INSERT되지 않도록 구현하기 위해서 **INSERT IGNORE INTO**를 사용하였으나 중복값이 입력되는 문제를 겪었습니다. 
     
