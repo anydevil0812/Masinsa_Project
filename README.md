@@ -169,7 +169,7 @@ DTO 설정에서 **Long maskId가 아닌 Mask mask로 정의**해서 **Mask 객
 <br><br> ⇒  **window.location.href**를 이용하여 해당 url을 추출하여 **split**을 이용해 접근 토큰에 대한 데이터만 추출하여 해결하였습니다.
 <p align="center"><img src="https://blog.kakaocdn.net/dn/bhOSQS/btrUNV4NMDg/Hb9kfnV8OEbJQpdITD9Yd0/img.jpg" height="300" width="500"><p>
 
-10. 네이버 로그인 후 네이버 API를 이용한 회원 정보를 조회하는 요청이 계속 거절당하는 문제가 발생하였습니다. <br><br> 알고보니 **BackEnd 서버**에서 네이버 DB로 **회원 프로필 정보 조회 api 호출** 시 **CORS ERROR**가 발생하는 것이었고 해당 문제의 원인을 찾아보니 작업중인 **React 서버(localhost:3000)와 Spring boot 서버의 포트번호(localhost:8080)가 서로 달라서** 네이버에서 보안상 요청을 거부하도록 설정한 것이 원인이었습니다.
+10. 네이버 로그인 후 네이버 API를 이용한 회원 정보를 조회하는 요청이 계속 거절당하는 문제가 발생하였습니다. <br><br> 알고보니 **BackEnd 서버**에서 네이버 DB로 **회원 프로필 정보 조회 api 호출** 시 **CORS ERROR**가 발생하는 것이었고 해당 문제의 원인을 찾아보니 작업중인 **React 서버(localhost:3000)와 Spring boot 서버의 포트번호(localhost:8080)가 서로 달라서** 네이버에서 보안 상 요청을 거부하도록 설정한 것이 원인이었습니다.
 <br><br> ⇒ React에서 http-proxy-middleware를 사용하여 proxy를 통한 우회 후 api 요청하는 방법으로 이를 해결하였습니다.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/109947297/210244513-515389bb-a709-4c34-8a01-17e3d0afbba2.jpg" height="230"><p>
