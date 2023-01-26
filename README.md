@@ -2,7 +2,7 @@
 <img width="840" style="display: block; margin: 0 auto;" alt="마신사" src="https://user-images.githubusercontent.com/109947297/210025252-43a9d88e-0a29-4ea5-a286-4fcc1a1f80bb.png">
 
 ### [마신사 링크]
-**[http://34.64.79.156:3000/](http://34.64.79.156:3000/)**
+ **http://35.216.95.168:3000/**
 
 ### [관련 보고서 파일]
 [마신사_발표자료_12_23_최종.pdf](https://github.com/anydevil0812/Masinsa_Project/files/10325154/_._12_23_.pdf)
