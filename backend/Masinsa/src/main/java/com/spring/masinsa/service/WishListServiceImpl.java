@@ -1,10 +1,14 @@
 package com.spring.masinsa.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -51,24 +55,34 @@ public class WishListServiceImpl implements WishListService {
 		return wishListDTO;
 	}
 	
-//	@Transactional // JSON으로 수정 필요
-//	public List<HashMap> getAllWishList2(Long memberId, Long page, Long size) {
-//		Long limit = null;
-//		Long offset = null;
-//		if (size != null) {
-//			limit = size;
-//		}
-//		if (page != null && size != null) {
-//			offset = (page - 1) * size;
-//		}
-//		List<HashMap> wishList = wishListMapper.getAllWishList2(memberId, limit, offset);
-//		JSONArray jsonArray = new JSONArray();
-//		for (HashMap hashMap : wishList) {
-//			jsonArray.add(getJson)
-//		}
-//		
-//		return wishList;
-//	}
+	@Transactional 
+	public JSONArray getAllWishList2(Long memberId, Long page, Long size) {
+		Long limit = null;
+		Long offset = null;
+		if (size != null) {
+			limit = size;
+		}
+		if (page != null && size != null) {
+			offset = (page - 1) * size;
+		}
+		List<HashMap> wishList = wishListMapper.getAllWishList2(memberId, limit, offset);
+		JSONArray jsonArray = new JSONArray();
+		for (Map<String, Object> map : wishList) {
+			jsonArray.add(convertMapToJSON(map));
+		}
+		return jsonArray;
+	}
+	
+	public JSONObject convertMapToJSON(Map<String, Object> map) {
+		JSONObject json = new JSONObject();
+		for (Map.Entry<String, Object> entry : map.entrySet()) {
+			String key = entry.getKey();
+			Object value = entry.getValue();
+			json.put(key, value);
+		}
+		return json;
+	}
+	
 	
 	@Override
 	@Transactional

@@ -1,5 +1,7 @@
 package com.spring.masinsa.entity;
 
+import java.util.HashMap;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

@@ -3,6 +3,7 @@ package com.spring.masinsa.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,7 +41,7 @@ public class WishlistController {
 		 return new ResponseEntity<>(msg, HttpStatus.OK);
 	}
 	
-	@ApiOperation(value = "21번 - 찜 목록 조회")
+	@ApiOperation(value = "21번 - 찜 목록 조회(JPA.ver)")
 	@GetMapping("/wishlist")
 	public ResponseEntity<List<WishListDTO>> getWishList
 	(@RequestParam Long memberId, @RequestParam int page, @RequestParam int size) {
@@ -48,13 +49,13 @@ public class WishlistController {
 		return new ResponseEntity<List<WishListDTO>>(wishListDTO, HttpStatus.OK);
 	}
 	
-//	@ApiOperation(value = "20번 - memberId를 통해 찜 목록 전체 조회(MyBatis.ver)")
-//	@GetMapping("/wishlist2")
-//	public ResponseEntity<List<HashMap>> getWishList2
-//	(@RequestParam Long memberId, @RequestParam Long page, @RequestParam Long size) {
-//		List<HashMap> wishListDTO = wishListService.getAllWishList2(memberId, page, size);
-//		return new ResponseEntity<List<HashMap>>(wishListDTO, HttpStatus.OK);
-//	}
+	@ApiOperation(value = "21번 - 찜 목록 조회(MyBatis.ver)")
+	@GetMapping("/wishlist2")
+	public ResponseEntity<JSONArray> getWishList2
+	(@RequestParam Long memberId, @RequestParam Long page, @RequestParam Long size) {
+		JSONArray wishListDTO = wishListService.getAllWishList2(memberId, page, size);
+		return new ResponseEntity<JSONArray>(wishListDTO, HttpStatus.OK);
+	}
 	
 	
 	@ApiOperation(value = "22번 - 찜 삭제/복원")

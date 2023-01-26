@@ -97,20 +97,6 @@ public class MaskServiceImpl implements MaskService {
 											.collect(Collectors.toList());
 		return maskDTOList;
 	}
-	
-//	@Override
-//	@Transactional
-//	public List<MaskDTO> getSortedMasksPage(String col, String order, int page, int size) {
-//		int limit = size;
-//		int offset = (page - 1) * size;
-//		// System.out.println(("col : " + col + ", order : " + order + ", limit : " + limit + ", offset : " + offset));
-//		List<Mask> maskList = maskMapper.getSortedMasksByPage(col, order, limit, offset);
-//		System.out.println(maskList);
-//		List<MaskDTO> maskDTOList = maskList.stream()
-//											.map(mask -> Mask.entityToDTO(mask))
-//											.collect(Collectors.toList());
-//		return maskDTOList;
-//	}
 
 	@Override //col, order, page, size, filterCol, filter
 	public List<MaskDTO> FilterSortMaskByPage(String sortCol, String order, Integer page, Integer size, 
@@ -134,7 +120,7 @@ public class MaskServiceImpl implements MaskService {
 	}
 
 	@Override
-  public List<MaskDTO> SearchSortMask(String keyword, String sortCol, String order, Integer page, Integer size) {
+	public List<MaskDTO> SearchSortMask(String keyword, String sortCol, String order, Integer page, Integer size) {
 		Integer limit = null;
 		Integer offset = null;
 		if (size != null) {
@@ -160,20 +146,5 @@ public class MaskServiceImpl implements MaskService {
 											.map(mask -> Mask.entityToDTO(mask))
 											.collect(Collectors.toList());
 		return maskDTOList;
-
-
-		// for (String k : keywords) {
-		// 	//check if keyword[i] is empty
-		// 	if (!k.equals("")) {
-		// 		List<Mask> maskListByKeyword = maskMapper.SearchSortMask(k, sortCol, order, limit, offset);
-		// 		//maskList에 maskListByKeyword를 추가한다. 중복이 없도록 한다.
-		// 		for (Mask mask : maskListByKeyword) {
-		// 			// if mask is not null and maskList does not contain mask, then add mask to maskList
-		// 			if (mask != null && !maskList.contains(mask)) {
-		// 				maskList.add(mask);
-		// 			}
-				}
-	}
-
-
-
+		}
+}
