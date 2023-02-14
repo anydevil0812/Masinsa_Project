@@ -14,6 +14,9 @@
 **[진행 기간]**
 - 2022.11.28 ~ 2022.12.22
 
+**[팀 구성]** 
+- 프론트엔드 2명, 백엔드 2명, 머신러닝 1명
+
 **[진행 배경]**
 
 코로나로 인하여 마스크 착용이 일상화 되어 있고, 다음과 같은 이유들로 사람들이 마스크 구매에 어려움을 겪고 있어 진행하게 되었습니다.
@@ -132,13 +135,10 @@
 
 6. **[문제 내용]**<br>Spring boot로 조회 메소드에 MyBatis를 이용한 pagination 구현을 시도하였지만 MyBatis mapper.xml 파일에서 TypeException이 발생<br><br>**[문제 원인]**<br>Like문에 대한 조건 입력 시에 '%#{변수}%'으로 입력 ⇒ #{}으로 변수값을 불러올 경우 자동으로 따옴표('')가 앞뒤로 붙어서 String 형태 입력되기 때문에 문제가 발생<br><br>**[해결 방법]**<br>#을 $으로 수정함으로써 문제를 해결 ⇒ ${}으로 변수값을 불러올 경우 자동으로 해당 컬럼의 데이터 타입에 맞추어 입력되기 때문
     
-<p align="center"><img src="https://user-images.githubusercontent.com/109947297/210243024-e1a4371e-6c3b-483c-87f6-148e8e10f757.jpg" height="280" width="550"><p>
-<p align="center"><img src="https://user-images.githubusercontent.com/109947297/210243184-c4d79e8f-359c-4f85-8b5f-ad0d885468e9.jpg" height="280" width="550"><p>
-
-7. **[문제 내용]**<br>필터링 기능을 구현한 메소드에서 IllegalArgumentException이 발생<br><br>**[문제 원인]**<br>Y와 N만 입력할 수 있도록 JPA에서 Emum으로 정의한 컬럼에 팀원들 중 한 명이 DB에 테스트 데이터를 입력할 때 Y나 N이 아닌 test라는 문자열 데이터를 DB에 저장<br><br>**[해결 방법]**<br>test ⇒ N으로 수정하여 해결
-
 <p align="center"><img src="https://user-images.githubusercontent.com/109947297/218639559-f8530aa2-de10-4a13-b5b3-f801a766ac24.jpg" height="280" width="900"><p>
 
+7. **[문제 내용]**<br>필터링 기능을 구현한 메소드에서 IllegalArgumentException이 발생<br><br>**[문제 원인]**<br>Y와 N만 입력할 수 있도록 JPA에서 Emum으로 정의한 컬럼에 팀원들 중 한 명이 DB에 테스트 데이터를 입력할 때 Y나 N이 아닌 test라는 문자열 데이터를 DB에 저장<br><br>**[해결 방법]**<br>test ⇒ N으로 수정하여 해결
+    
 **MySQL**
 1. **[문제 내용]**<br>찜 기능 작업 시 동일한 회원 ID와 마스크ID에 대해서 찜 데이터가 DB에 중복으로 INSERT되지 않도록 구현하기 위해서 INSERT IGNORE INTO를 사용하였으나 중복값이 입력됨<br><br>**[해결 방법]**<br>INSERT INTO ~ SELECT ~ FROM DUAL WHERE NOT EXISTS 구문을 이용하여 해결
     
