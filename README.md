@@ -65,7 +65,8 @@
 5. 프레임워크
     - React
     - chart.js
-    - SpringBoot
+    - Spring Boot (Maven)
+    - Spring Data JPA
     - MyBatis
 6. Deploy
     - GCP (SQL Server)
