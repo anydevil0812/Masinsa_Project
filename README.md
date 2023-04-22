@@ -1,7 +1,7 @@
 # 마신사 프로젝트
 <img width="840" style="display: block; margin: 0 auto;" alt="마신사" src="https://user-images.githubusercontent.com/109947297/210025252-43a9d88e-0a29-4ea5-a286-4fcc1a1f80bb.png">
 
-- **[마신사 링크] - [http://35.216.95.168:3000/](http://35.216.95.168:3000/)**
+- **[마신사 링크] - [http://35.216.85.23:3000//](http://35.216.85.23:3000/)**
 - **[시연 영상 링크]** - [**https://coding789.tistory.com/168**](https://coding789.tistory.com/168)
 - **[API 문서 링크(Swagger)] - [http://35.216.122.45:8080/swagger-ui.html](http://35.216.122.45:8080/swagger-ui.html)**
 - **[관련 보고서 파일]**
