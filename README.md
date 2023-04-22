@@ -3,7 +3,7 @@
 
 - **[마신사 링크] - [http://35.216.85.23:3000/](http://35.216.85.23:3000/)**
 - **[시연 영상 링크]** - [**https://coding789.tistory.com/168**](https://coding789.tistory.com/168)
-- **[API 문서 링크(Swagger)] - [http://35.216.122.45:8080/swagger-ui.html](http://35.216.122.45:8080/swagger-ui.html)**
+- **[API 문서 링크(Swagger)] - [http://35.216.85.134:8080/swagger-ui.html](http://35.216.85.134:8080/swagger-ui.html)**
 - **[관련 보고서 파일]**
 [**마신사_발표자료_12_23_최종.pdf**](https://github.com/anydevil0812/Masinsa_Project/files/10325154/_._12_23_.pdf)
 
