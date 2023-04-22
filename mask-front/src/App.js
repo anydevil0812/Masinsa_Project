@@ -1,91 +1,55 @@
-import "./App.css";
-import AboutPage from "./pages/AboutPage";
-import DashBoardPage from "./pages/DashBoardPage";
-import IntroducePage from "./pages/IntroducePage";
-import ListPage from "./pages/ListPage";
-import MainPage from "./pages/MainPage";
-import MyPage from "./pages/MyPage";
-import { Route, Routes } from "react-router-dom";
-import RecentView from "./components/RecentView";
+import { Outlet } from "react-router-dom";
+import RecentView from "./components/recentView/RecentView";
 import UpBtn from "./components/UpBtn";
 import Header from "./components/Header";
-import { Wrapper } from "./styles/OtherStyles";
-import { useEffect, useRef, useState } from "react";
-import LoginPage from "./pages/LoginPage";
+import { useState } from "react";
+import { UserLoginContext } from "./context/UserLoginContext";
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from "../src/styles/GlobalStyle";
+import theme from "../src/styles/theme";
+import variables from "../src/styles/variables";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import { useEffect } from "react";
+import { getCookie } from "./cookie";
+import { CookiesProvider } from "react-cookie";
+import { getUserInfo } from "./api/user";
 
 function App() {
-  // user 정보
-  const [user, setUser] = useState();
+  const [isLogin, setIsLogin] = useState(false);
+  const [userInfo, setUserInfo] = useState();
 
-  // 로그인 status
-  const [status, setStatus] = useState(false);
-
-  // 페이지 이동시에도 유저정보를 받을 수 있도록 !
-  if (user) {
-    localStorage.setItem("userInfo", JSON.stringify(user));
-  }
-
-  // console.log("유저정보", user);
+  // 새로고침 시, 쿠키에서 accessToken이 존재하는 지 확인
+  // => 존재한다면 로그인 상태이므로 사용자정보 재요청
+  useEffect(() => {
+    const accessToken = getCookie("accessToken");
+    if (accessToken) {
+      getUserInfo({ accessToken, setUserInfo });
+    }
+  }, []);
 
   return (
-    <div className="App">
-      {/* mui 사용을 위한 코드 */}
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-      />
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      />
-      {/* 헤더부분 */}
-      <Wrapper>
-        <Header
-          user={user}
-          setUser={setUser}
-          setStatus={setStatus}
-          status={status}
-        />
-        <Routes>
-          {/* 메인페이지 :  "http://localhost:3000/" */}
-          {/* http://35.216.95.168:3000/ */}
-          <Route path="/" element={<MainPage />} />
-
-          {/* 상품리스트페이지 : "http://localhost:3000/MaskList/Masinsa/:blockingindex" */}
-          {/* http://35.216.95.168:3000/MaskList/Masinsa/:blockingindex */}
-          <Route
-            path="MaskList/Masinsa/:blockingindex"
-            element={<ListPage />}
-          />
-
-          {/* 상품상세페이지 : "http://localhost:3000/aboutMask/:maskId/Masinsa" */}
-          {/* http://35.216.95.168:3000/aboutMask/:maskId/Masinsa */}
-          <Route path="/aboutMask/:maskId/Masinsa/*" element={<AboutPage />} />
-
-          {/* 마이페이지 : "http://localhost:3000/:memberId/MyPage/Masinsa" */}
-          {/* http://35.216.95.168:3000/:memberId/MyPage/Masinsa */}
-          <Route path="/:memberId/MyPage/Masinsa" element={<MyPage />} />
-
-          {/* 마신사소개페이지 : "http://localhost:3000/Introduce/Masinsa" */}
-          {/* http://35.216.95.168:3000/Introduce/Masinsa */}
-          <Route path="/Introduce/Masinsa" element={<IntroducePage />} />
-
-          {/* 로그인페이지 : "http://localhost:3000/Login/Masinsa" */}
-          {/* http://35.216.95.168:3000/Login/Masinsa */}
-          <Route
-            path="/Login/Masinsa"
-            element={
-              <LoginPage setUser={setUser} setStatus={setStatus} user={user} />
-            }
-          />
-
-          {/* 대시보드페이지 : "http://localhost:3000/DashBoard/Masinsa" */}
-          <Route path="/DashBoard/Masinsa" element={<DashBoardPage />} />
-        </Routes>
-        <RecentView />
-        <UpBtn />
-      </Wrapper>
-    </div>
+    <CookiesProvider>
+      <ThemeProvider theme={{ style: theme, variables }}>
+        {/* context를 이용해 전역 상태관리 => 유저 로그인 정보 */}
+        <UserLoginContext.Provider
+          value={{
+            setIsLogin,
+            isLogin,
+            setUserInfo,
+            userInfo,
+          }}
+        >
+          <GlobalStyle />
+          <Header />
+          <Nav />
+          <Outlet />
+          <Footer />
+          <RecentView />
+          <UpBtn />
+        </UserLoginContext.Provider>
+      </ThemeProvider>
+    </CookiesProvider>
   );
 }
 
