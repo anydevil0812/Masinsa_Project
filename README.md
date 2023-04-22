@@ -1,9 +1,9 @@
 # 마신사 프로젝트
-<img width="840" style="display: block; margin: 0 auto;" alt="마신사" src="https://user-images.githubusercontent.com/109947297/210025252-43a9d88e-0a29-4ea5-a286-4fcc1a1f80bb.png">
+<img width="840" style="display: block; margin: 0 auto;" alt="마신사" src="https://user-images.githubusercontent.com/109947297/233774095-04522f44-389c-4cd6-8363-1ff2a2bf890c.jpg">
 
-- **[마신사 링크] - [http://35.216.95.168:3000/](http://35.216.95.168:3000/)**
+- **[마신사 링크] - [http://35.216.85.23:3000/](http://35.216.85.23:3000/)**
 - **[시연 영상 링크]** - [**https://coding789.tistory.com/168**](https://coding789.tistory.com/168)
-- **[API 문서 링크(Swagger)] - [http://35.216.122.45:8080/swagger-ui.html](http://35.216.122.45:8080/swagger-ui.html)**
+- **[API 문서 링크(Swagger)] - [http://35.216.85.134:8080/swagger-ui.html](http://35.216.85.134:8080/swagger-ui.html)**
 - **[관련 보고서 파일]**
 [**마신사_발표자료_12_23_최종.pdf**](https://github.com/anydevil0812/Masinsa_Project/files/10325154/_._12_23_.pdf)
 
@@ -150,7 +150,7 @@
 
 <p align="center"><img src="https://user-images.githubusercontent.com/109947297/210244131-12aecc6f-f1db-42a1-bcf3-7de9b31f7277.jpg" height="280"><p>
 
-2. **[문제 내용]**<br>네이버 로그인 기능 구현 중 접근 토큰이 보안상br>JSON 객체가 아닌 쿼리 스트링으로 반환 (React)<br><br>**[해결 방법]**<br>window.location.href를 이용하여 해당 url을 추출한 뒤 split을 이용해 접근 토큰에 대한 데이터만 추출하여 해결
+2. **[문제 내용]**<br>네이버 로그인 기능 구현 중 접근 토큰이 보안상 JSON 객체가 아닌 쿼리 스트링으로 반환 (React)<br><br>**[해결 방법]**<br>window.location.href를 이용하여 해당 url을 추출한 뒤 split을 이용해 접근 토큰에 대한 데이터만 추출하여 해결
 
 <p align="center"><img src="https://blog.kakaocdn.net/dn/bhOSQS/btrUNV4NMDg/Hb9kfnV8OEbJQpdITD9Yd0/img.jpg" height="300" width="500"><p>
 
