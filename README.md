@@ -150,7 +150,7 @@
 
 <p align="center"><img src="https://user-images.githubusercontent.com/109947297/210244131-12aecc6f-f1db-42a1-bcf3-7de9b31f7277.jpg" height="280"><p>
 
-2. **[문제 내용]**<br>네이버 로그인 기능 구현 중 접근 토큰이 보안상<br>JSON 객체가 아닌 쿼리 스트링으로 반환 (React)<br><br>**[해결 방법]**<br>window.location.href를 이용하여 해당 url을 추출한 뒤 split을 이용해 접근 토큰에 대한 데이터만 추출하여 해결
+2. **[문제 내용]**<br>네이버 로그인 기능 구현 중 접근 토큰이 보안상 JSON 객체가 아닌 쿼리 스트링으로 반환 (React)<br><br>**[해결 방법]**<br>window.location.href를 이용하여 해당 url을 추출한 뒤 split을 이용해 접근 토큰에 대한 데이터만 추출하여 해결
 
 <p align="center"><img src="https://blog.kakaocdn.net/dn/bhOSQS/btrUNV4NMDg/Hb9kfnV8OEbJQpdITD9Yd0/img.jpg" height="300" width="500"><p>
 
