@@ -150,11 +150,7 @@
 
 <p align="center"><img src="https://user-images.githubusercontent.com/109947297/210244131-12aecc6f-f1db-42a1-bcf3-7de9b31f7277.jpg" height="280"><p>
 
-2. **[문제 내용]**<br>네이버 로그인 기능 구현 중 접근 토큰이 보안상 JSON 객체가 아닌 쿼리 스트링으로 반환 (React)<br><br>**[해결 방법]**<br>window.location.href를 이용하여 해당 url을 추출한 뒤 split을 이용해 접근 토큰에 대한 데이터만 추출하여 해결
-
-<p align="center"><img src="https://blog.kakaocdn.net/dn/bhOSQS/btrUNV4NMDg/Hb9kfnV8OEbJQpdITD9Yd0/img.jpg" height="300" width="500"><p>
-
-3. **[문제 내용]**<br>네이버 로그인 후 네이버 API를 이용한 회원 정보를 조회하는 요청이 계속 거절됨 (React)<br><br>**[문제 원인]**<br>BackEnd 서버에서 네이버 DB로 회원 프로필 정보 조회 api 호출 시 CORS ERROR가 발생⇒ FrontEnd 서버(localhost:3000)와 BackEnd 서버의 포트번호(localhost:8080)가 서로 달라서 네이버에서 보안상 요청을 거부하도록 설정한 것<br><br>**[해결 방법]**<br>React에서 http-proxy-middleware를 설치하여 proxy를 통한 우회 후 api 요청하여 해결
+2. **[문제 내용]**<br>네이버 로그인 후 네이버 API를 이용한 회원 정보를 조회하는 요청이 계속 거절됨 (React)<br><br>**[문제 원인]**<br>BackEnd 서버에서 네이버 DB로 회원 프로필 정보 조회 api 호출 시 CORS ERROR가 발생⇒ FrontEnd 서버(localhost:3000)와 BackEnd 서버의 포트번호(localhost:8080)가 서로 달라서 네이버에서 보안상 요청을 거부하도록 설정한 것<br><br>**[해결 방법]**<br>React에서 http-proxy-middleware를 설치하여 proxy를 통한 우회 후 api 요청하여 해결
 
 <p align="center"><img src="https://user-images.githubusercontent.com/109947297/210244513-515389bb-a709-4c34-8a01-17e3d0afbba2.jpg" height="230"><p>
     
